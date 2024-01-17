@@ -1,0 +1,60 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.4.0",
+	"FriendlyName": "ArcGIS Maps SDK for Unreal Engine",
+	"Description": "ArcGIS Maps SDK for Unreal Engine is a plugin developed by Esri that enables access to real world maps and 3D content from the ArcGIS Platform. This plugin provides samples, blueprints, and an API to create interactive, photorealistic 3D and XR experiences with geospatial data.",
+	"Category": "Esri",
+	"CreatedBy": "Esri",
+	"CreatedByURL": "https://www.esri.com/",
+	"DocsURL": "https://developers.arcgis.com/unreal-engine/",
+	"MarketplaceURL": "",
+	"SupportURL": "https://support.esri.com/en/Products/Developers/arcgis-maps-sdks/arcgis-maps-sdk-for-unreal-engine",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "ArcGISMapsSDK",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit",
+			"PlatformAllowList": [
+				"Android",
+				"HoloLens",
+				"IOS",
+				"Mac",
+				"Win64"
+			]
+		},
+		{
+			"Name": "ArcGISMapsSDKEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Mac",
+				"Win64"
+			]
+		},
+		{
+			"Name": "ArcGISSamples",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Android",
+				"HoloLens",
+				"IOS",
+				"Mac",
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GeoReferencing",
+			"Enabled": true
+		},
+		{
+			"Name": "WebAuth",
+			"Enabled": true
+		}
+	]
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--ARToolKit plugin additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- Variables added to GameActivity class -->
+	<gameActivityClassAdditions>
+		<insert>
+			private ComponentCallbacks2 arcGISComponentCallbacks2;
+
+			private static native void nativeArcGISOnLowMemory();
+			private static native void nativeArcGISOnTrimMemory(int level);
+		</insert>
+	</gameActivityClassAdditions>
+
+	<!-- Code additions to GameActivity onCreate in GameActivity.java -->
+	<gameActivityOnCreateAdditions>
+		<insert>
+			arcGISComponentCallbacks2 = new ComponentCallbacks2()
+			{
+				@Override
+				public void onTrimMemory(int level)
+				{
+					nativeArcGISOnTrimMemory(level);
+				}
+
+				@Override
+				public void onConfigurationChanged(Configuration newConfig)
+				{
+					// No-op, interface has to be respected but the application handler handles everything else already
+				}
+
+				@Override
+				public void onLowMemory()
+				{
+					nativeArcGISOnLowMemory();
+				}
+			};
+		</insert>
+	</gameActivityOnCreateAdditions>
+
+	<gameActivityOnResumeAdditions>
+		<insert>
+			getApplicationContext().registerComponentCallbacks(arcGISComponentCallbacks2);
+		</insert>
+	</gameActivityOnResumeAdditions>
+
+	<gameActivityOnPauseAdditions>
+		<insert>
+			getApplicationContext().unregisterComponentCallbacks(arcGISComponentCallbacks2);
+		</insert>
+	</gameActivityOnPauseAdditions>
+</root>
